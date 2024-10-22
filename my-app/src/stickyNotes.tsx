@@ -52,8 +52,7 @@ export function StickyNotes() {
         return note;
       });
 
-      setNotes(edittedSelectedNote)
-      //try to get whole list edited and send as setNotes(updatedNoteList)!!!
+      setNotes(edittedSelectedNote);
     }
 
     const editContentSelectedNote = (content: string, noteId:number) => {
@@ -65,8 +64,7 @@ export function StickyNotes() {
         return note;
       });
 
-      setNotes(edittedSelectedNote)
-      //try to get whole list edited and send as setNotes(updatedNoteList)!!!
+      setNotes(edittedSelectedNote);
     }
 
     const editLabelSelectedNote = (label: string, noteId:number) => {
@@ -78,8 +76,7 @@ export function StickyNotes() {
         return note;
       });
 
-      setNotes(edittedSelectedNote)
-      //try to get whole list edited and send as setNotes(updatedNoteList)!!!
+      setNotes(edittedSelectedNote);
     }
   
     const favoriteClicked = (noteId:number) => {
@@ -131,7 +128,7 @@ export function StickyNotes() {
           setCreateNote({ ...createNote, title: event.target.value })}
         required></input></div>
 
-            <div>< textarea onChange={(event) =>
+            <div>< textarea placeholder="Note Content" onChange={(event) =>
               setCreateNote({ ...createNote, content: event.target.value })}
             required style = {{background: currentTheme.background,
         color: currentTheme.foreground,}}></textarea></div>
@@ -161,7 +158,7 @@ export function StickyNotes() {
               <div className="notes-header">
                 <button onClick={() => favoriteClicked(note.id)} style = {{background: currentTheme.background,
         color: currentTheme.foreground,}}>{note.favorite ? "♥" : "♡"}</button>
-                <button onClick={() => deleteNote(note.id)} style = {{background: currentTheme.background,
+                <button data-testid = {"deleteButton" + note.id} onClick={() => deleteNote(note.id)} style = {{background: currentTheme.background,
         color: currentTheme.foreground,}}>x</button>
               </div>
               <h2 contentEditable suppressContentEditableWarning = {true} onBlur={(event) => editTitleSelectedNote(event.target.innerHTML, note.id)}> {note.title} </h2>
